@@ -27,13 +27,15 @@ public class BirthService {
     @Autowired
     BirthRepository birthRepository;
 
-    public List<BirthModel> calculateAndSaveAgeForAll() {
+    public void calculateAndSaveAgeForAll() {
         List<BirthModel> births = parseFile();
         calculateAge(births);
 
         saveAll(births);
+    }
 
-        return births;
+    public List<BirthModel> findAll() {
+        return birthRepository.findAll();
     }
 
     private void saveAll(List<BirthModel> births) {
